@@ -1,7 +1,12 @@
 # Compile
 
 ```
+For simple app:
 sbt package
+
+To include external jars:
+sbt assembly
+
 ```
 
 # run
