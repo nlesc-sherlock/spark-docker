@@ -14,7 +14,7 @@ import java.nio.file.Files.createTempDirectory
 import java.nio.file.Files.createFile
 
 
-object ListDirApp {
+object CaffeApp {
 
 	def mapDocker(binaryFile :(String, PortableDataStream)):(String,String) = {
 		print("The filename is: " + binaryFile._1 + " !!!\n")
@@ -34,7 +34,7 @@ object ListDirApp {
 	}
 
 	def main(args: Array[String]) {
-		val conf = new SparkConf().setAppName("List Dir App")
+		val conf = new SparkConf().setAppName("Caffe App")
 		val sc = new SparkContext(conf)
 		val hconf = sc.hadoopConfiguration
 

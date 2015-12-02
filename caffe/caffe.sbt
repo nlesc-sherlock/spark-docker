@@ -1,4 +1,4 @@
-name := "List Dir App"
+name := "Caffe App"
 
 version := "1.0"
 
