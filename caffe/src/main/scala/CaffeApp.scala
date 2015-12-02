@@ -8,8 +8,13 @@ import org.apache.spark.input.PortableDataStream
 import scala.sys.process._
 import scalax.file.{Path, FileSystem}
 import scalax.io.StandardOpenOption._
+import scopt.OptionParser
 
 object CaffeApp {
+	private case class Params(
+		input: String = null,
+		output: String = null
+	)
 
 	def mapDocker(binaryFile :(String, PortableDataStream)):(String,String) = {
 		print("The filename is: " + binaryFile._1 + " !!!\n")
@@ -27,13 +32,36 @@ object CaffeApp {
 	}
 
 	def main(args: Array[String]) {
+		val defaultParams = Params()
+		val parser = new OptionParser[Params]("CaffeApp") {
+			head("CaffeApp: categorize images.")
+			arg[String]("<input>")
+				.text("input path to directory where are the images.")
+				.required()
+				.action((x, c) => c.copy(input = x))
+			arg[String]("<output>")
+				.text("Output directory for the results!!!")
+				.required()
+				.action((x, c) => c.copy(output = x))
+		}
+
+		parser.parse(args, defaultParams).map { params =>
+		      run(params)
+		}.getOrElse {
+		      parser.showUsageAsError
+		      sys.exit(1)
+		}
+
+	}
+
+	def run(params: Params) {
 		val conf = new SparkConf().setAppName("Caffe App")
 		val sc = new SparkContext(conf)
-		val hconf = sc.hadoopConfiguration
 
-		val binF = sc.binaryFiles("/home/romulo/sherlock/in_dir")
-		print("The list of ifiles is: ")
+		val binF = sc.binaryFiles(params.input)
+		print("The list of files is: ")
 		val fileLengths = binF.map(T => this.mapDocker(T))
+		//TODO: here we should save the result into a file
 		fileLengths.foreach{println}
 		print("done!\n")
 	}
