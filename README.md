@@ -14,7 +14,7 @@ Spark:
 SBT:
 ----
 
-* To create Spark's apps you need to have SBT the instructions to install it on Ubuntu are the following:
+* To create Spark's apps you need to have SBT. The instructions to install it on Ubuntu are the following:
 ```
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
