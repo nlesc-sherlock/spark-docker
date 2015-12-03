@@ -1,4 +1,4 @@
-name := "Caffe App"
+name := "caffeApp"
 
 version := "1.0"
 
