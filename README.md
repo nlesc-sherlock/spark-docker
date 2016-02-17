@@ -3,7 +3,7 @@ Running docker containers inside Spark.
 Spark applications:
 
 * caffee/, run the [docker file from deep learning repo](https://github.com/nlesc-sherlock/deeplearning/blob/master/dockerfile) using directory of images on HDFS
-* caffeeseq/, run the [docker file from deep learning repo](https://github.com/nlesc-sherlock/deeplearning/blob/master/dockerfile) using sequence file on HDFS
+* caffeeseq/, run the [docker file from deep learning repo](https://github.com/nlesc-sherlock/deeplearning/blob/master/dockerfile) using sequence file on HDFS as input and orc file as output
 
 See README file of each applications for build and run instructions.
 
@@ -37,4 +37,3 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
 sudo apt-get update
 sudo apt-get install sbt
 ```
-

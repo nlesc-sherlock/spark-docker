@@ -11,22 +11,19 @@ Jars are build in `target/scala-2.10/`.
 
 ```
 tar -cf images.tar images
-forqlift fromarchive --file images.seq images.tar 
+forqlift fromarchive --file images.seq images.tar
 hdfs dfs -copyFromLocal images.seq /home/shelly/images.seq
-rm images.seq images.tar 
+rm images.seq images.tar
 ```
 
 # Run
 
-On spark initialized prompt (spark-env.sh sourced). 
+On spark initialized prompt (spark-env.sh sourced).
 
 ```
 hdfs dfs -rm -r labels.seq
-spark-submit --class CaffeAppSeq --master yarn-cluster  --num-executors 15 --executor-memory 2G caffeAppSeq-assembly-1.0.1.jar images.seq labels.orc
-
 spark-submit --class CaffeAppSeq --master yarn-cluster  --num-executors 15 --executor-memory 2G \
 --files /usr/hdp/current/spark-client/conf/hive-site.xml \
 --jars /usr/hdp/current/spark-client/lib/datanucleus-api-jdo-3.2.6.jar,\/usr/hdp/current/spark-client/lib/datanucleus-rdbms-3.2.9.jar,/usr/hdp/current/spark-client/lib/datanucleus-core-3.2.10.jar \
 caffeAppSeq-assembly-1.0.2.jar images.seq labels.orc
 ```
-

@@ -69,7 +69,7 @@ object CaffeAppSeq {
 		val conf = new SparkConf().setAppName("Caffe App")
 		val sc = new SparkContext(conf)
     val sqlContext = new HiveContext(sc)
-		val images = sc.sequenceFile(params.input, classOf[Text], classOf[BytesWritable]).sample(false, 0.001)
+		val images = sc.sequenceFile(params.input, classOf[Text], classOf[BytesWritable])
 
 		val labels = images.map(image => this.classifyImage(image)).map(row => Row(row._1, row._2))
 
