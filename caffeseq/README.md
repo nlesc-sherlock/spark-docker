@@ -21,7 +21,7 @@ rm images.seq images.tar
 On spark initialized prompt (spark-env.sh sourced).
 
 ```
-hdfs dfs -rm -r labels.seq
+hdfs dfs -rm -r labels.orc
 spark-submit --class CaffeAppSeq --master yarn-cluster  --num-executors 15 --executor-memory 2G \
 --files /usr/hdp/current/spark-client/conf/hive-site.xml \
 --jars /usr/hdp/current/spark-client/lib/datanucleus-api-jdo-3.2.6.jar,\/usr/hdp/current/spark-client/lib/datanucleus-rdbms-3.2.9.jar,/usr/hdp/current/spark-client/lib/datanucleus-core-3.2.10.jar \
