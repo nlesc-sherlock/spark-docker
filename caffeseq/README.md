@@ -1,4 +1,6 @@
 
+Run the docker image from deep learning repo using sequence file on HDFS as input and orc file as output
+
 # Build
 
 ```
